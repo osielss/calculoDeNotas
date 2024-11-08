@@ -56,6 +56,7 @@ $msg = "";
                 width: 90%;
             }
         }
+
     </style>
 </head>
 <body>
@@ -67,6 +68,7 @@ $msg = "";
         <td>N2</td>
         <td>N3</td>
         <td>N4</td>
+        <td>Restante</td>
     </tr>
     <?php
     
@@ -76,14 +78,20 @@ $msg = "";
     
     if ($retorno != null) { 
         foreach ($retorno as $valor) {
-            $mediaNec = (24 - ($valor['notab1'] + $valor['notab2']))/2;
+            $restante = (24 - ($valor['notab1'] + $valor['notab2'] + $valor['notab3'] + $valor['notab4']));
             echo ('<tr>');
             echo("<td>" . $valor['codigo'] . "</td>");
             echo("<td>" . $valor['materia'] . "</td>");
             echo("<td>" . $valor['notab1'] . "</td>");
             echo("<td>" . $valor['notab2'] . "</td>");
-            echo("<td>" . $mediaNec. "</td>");
-            echo("<td>" . $mediaNec . "</td>");
+            echo("<td>" . $valor['notab3']. "</td>");
+            echo("<td>" . $valor['notab4']. "</td>");
+
+            if($restante > 0){
+                echo("<td>" . $restante . "</td>");
+            } else {
+                echo("<td style='color: green;'>" . "Aprovado!" . "</td>");
+            }
             echo ('</tr>');
         }
     }
